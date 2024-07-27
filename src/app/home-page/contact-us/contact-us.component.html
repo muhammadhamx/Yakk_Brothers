@@ -1,0 +1,24 @@
+<div mat-dialog-title >Contact Us</div>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Your email" />
+    <mat-error *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+      Please enter a valid email
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field appearance="fill">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput formControlName="message" placeholder="Your message"></textarea>
+    <mat-error *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+      Please enter a message (at least 10 characters)
+    </mat-error>
+  </mat-form-field><br>
+  <div class="mt-xxl-2">
+      <h3>You can contact us on whatsapp: <p class="text-primary">+923061170448</p></h3>
+  </div>
+  <div>
+    <button mat-button type="button" (click)="onNoClick()">Cancel</button>
+    <button mat-button type="submit" [disabled]="contactForm.invalid">Send</button>
+  </div>
+</form>
